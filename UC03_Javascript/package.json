@@ -1,17 +1,27 @@
 {
-  "dependencies": {
-    "prompt-sync": "^4.2.0"
-  },
-  "name": "uc03_javascript",
+  "name": "uc03-desenvolver-algoritimos",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "Unidade Curricular 03 -  Desenvolver algoritmos - Técnico desenvolvimento de sistemas.",
   "main": "index.js",
-  "devDependencies": {},
+  "dependencies": {
+    "ansi-regex": "^4.1.1",
+    "prompt-sync": "^4.2.0",
+    "strip-ansi": "^5.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frof10/UC03-desenvolver-algoritimos.git"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frof10/UC03-desenvolver-algoritimos/issues"
+  },
+  "homepage": "https://github.com/frof10/UC03-desenvolver-algoritimos#readme",
+  "devDependencies": {}
 }
