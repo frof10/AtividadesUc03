@@ -30,7 +30,7 @@ class contaBancaria {
     depositar(valor){
         if(valor > 0){
             this.#saldo += valor;
-            console.log(`Deposito no valor: R$${valor.toFixed(2)} realizado com sucesso!`);
+            console.log(`Deposito no valor: ${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} realizado com sucesso!`);
         }else{
             console.log('Valor invalido, Digite novemente!');
         }
@@ -38,10 +38,24 @@ class contaBancaria {
 
     sacar(valor){
         if (valor > 0 && valor < this.#saldo){
-            this.#saldo -= valor;
-            console.log(`Saque de R$${valor.toFixed(2)} realizado com sucesso!`);
+            this.#saldo -= valor; 
+            console.log(`\nSaque de ${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} realizado com sucesso!`);
         }else{
-            console.log('Valor maior que o saldo, informe outro valor abaixo do saldo.');
+            console.log('Valor invalido, Digite novemente!');
+        }
+    }
+
+    calcularRendimento(){
+        if(this.#saldo > 0){
+        var rendimento = this.#saldo * 0.10;
+        console.log('\n=======================================');
+        console.log(`Saldo atual: ${this.#saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`);
+        console.log(`Seu rendimento no mês é de ${rendimento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`);
+        console.log(`Saldo total: ${this.#saldo += rendimento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`);
+        console.log('=======================================\n');
+        }else{
+            console.log('Opção Invalida! Saldo abaixo de R$0,00');
+            
         }
     }
 
@@ -56,17 +70,15 @@ console.log('=========================\n');
 
 var cliente = new contaBancaria (
     prompt('Digite o seu nome: '),
-    prompt('Digite a agencia: '),
+    prompt('Digite a agência: '),
     prompt('Digite a conta: ')
 );
 
-console.log(`\nBom dia, Sr(a) Cliente:`);
+console.log(`\nBom dia, Sr(a) ${cliente.nomeTitular}:`);
 cliente.imprimirCabecalho();
 
 var opcao = -1
 while (opcao !== 0) {
-console.log(`\nBom dia, Sr(a) Cliente:`);
-cliente.imprimirCabecalho();
 
 console.log('\n');
 console.log('==== Menu ====');
@@ -80,25 +92,29 @@ opcao = Number(prompt('Digite a opção: '))
 
 switch (opcao) {
     case 1:
-        console.log(`Saldo: R$${cliente.saldo.toFixed(2)}`);
-        
+        console.log('\n======================');
+        console.log(`Saldo: R$ ${cliente.saldo.toFixed(2).replace('.',',')}`);
+        console.log('======================\n');
         break;
 
     case 2:
         var saque = Number(prompt('Digite um valor para saque: '));
         cliente.sacar(saque);
-        console.log(`Saldo após o saque: R$${cliente.saldo.toFixed(2)}`);
-        
+        console.log('\n======================');
+        console.log(`Saldo após o saque: R$ ${cliente.saldo.toFixed(2).replace('.',',')}`);
+        console.log('======================\n');
         break;
     
     case 3:
         var deposito = Number(prompt('Digite um valor para deposito: '))
         cliente.depositar(deposito);
+        console.log('\n======================');
+        console.log(`Saldo após o depósito: R$ ${cliente.saldo.toFixed(2).replace('.',',')}`);
+        console.log('======================\n');
         break;
     
     case 4:
-        console.log('lofofo');
-        
+        cliente.calcularRendimento();
         break;
 
     case 0:
